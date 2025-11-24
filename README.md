@@ -8,6 +8,6 @@ Exercises from Project Odin Ruby and Rails course
 
 ```
   > caesar_cipher("What a string!", 5)
-  => "Bmfy f xywnsl!"
+  => "Bmfy f xywnsl!" 
 
 ```
