@@ -17,7 +17,7 @@ def caesar_cipher(str, shift)
     # Still not working fully. Need to account for shifts where it wraps (i.e. "W" with a shift of 5)
     # Will be 92 after current calculation. Needs to be 66. 
     if code.between?(UPPER_CASE_BASE,UPPER_CASE_MAX)
-      binding.pry
+      # binding.pry
       (code - UPPER_CASE_BASE + shift + UPPER_CASE_BASE)
     elsif code.between?(LOWER_CASE_BASE,LOWER_CASE_MAX)
       (code - LOWER_CASE_BASE + shift + LOWER_CASE_BASE).chr
