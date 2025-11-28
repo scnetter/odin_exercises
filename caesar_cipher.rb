@@ -1,24 +1,33 @@
+require "pry"
+require "pry-byebug"
+
+LOWER_CASE_BASE = 97
+LOWER_CASE_MAX = 122
+UPPER_CASE_BASE = 65
+UPPER_CASE_MAX = 90
+
 def caesar_cipher(str, shift)
   # A = 65, Z = 90, a = 97, z = 122, <space> = 32
   
   # get the current ASCII value of the characters in the string
   original_ascii = str.split("").map { |char| char.ord }
   
-  shifted_chars = original_ascii.map do |char|
-    case char
-    when 32
-      char.chr
-    when 90, 122
-      (char - 26 + shift).chr
+  shifted_chars = original_ascii.map do |code|
+  
+    # Still not working fully. Need to account for shifts where it wraps (i.e. "W" with a shift of 5)
+    # Will be 92 after current calculation. Needs to be 66. 
+    if code.between?(UPPER_CASE_BASE,UPPER_CASE_MAX)
+      binding.pry
+      (code - UPPER_CASE_BASE + shift + UPPER_CASE_BASE)
+    elsif code.between?(LOWER_CASE_BASE,LOWER_CASE_MAX)
+      (code - LOWER_CASE_BASE + shift + LOWER_CASE_BASE).chr
     else
-      (char + shift).chr
+      code.chr
     end
-  end
-
-  shifted_chars.join("")
+  end.join("")
 end
 
-puts caesar_cipher("abc", 3)
+puts caesar_cipher("What", 5)
 
 # TODO: 
 # Problems in current code
