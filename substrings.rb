@@ -18,18 +18,22 @@
 def substrings(input, dictionary)
   # Break input into all substrings (lowcase) and create a hash
   input_words = input.downcase.split
-  substrings = {}
+  substrings_from_input = []
 
   input_words.each do |word|
     word_accumulator = ""
     word.split("").each do |char|
       if(char.ord.between?(97, 122))
         word_accumulator += char
-        substrings[word_accumulator] = 0
+        substrings_from_input << word_accumulator
       end
     end
   end
-  p substrings
-end
 
-substrings("Hello, there", ["test"])
+  # search for substrings in dictionary
+  results = substrings_from_input.each_with_object(Hash.new(0)) do |substr, h|
+    if dictionary.include?(substr)
+      h[substr] += 1
+    end
+  end
+end
