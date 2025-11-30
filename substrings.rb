@@ -1,5 +1,6 @@
 
-
+require "pry"
+require "pry-byebug"
 # #substrings that takes a word as the first argument and 
 # then an array of valid substrings (your dictionary) as the 
 # second argument. It should return a hash listing each substring 
@@ -21,15 +22,17 @@ def substrings(input, dictionary)
   substrings_from_input = []
 
   input_words.each do |word|
-    word_accumulator = ""
-    word.split("").each do |char|
-      if(char.ord.between?(97, 122))
-        word_accumulator += char
-        substrings_from_input << word_accumulator
+    while !word.empty?
+      word_accumulator = ""
+      word.split("").each do |char|
+        if(char.ord.between?(97, 122))
+          word_accumulator += char
+          substrings_from_input << word_accumulator
+        end
       end
+      word = word[1,word.length - 1]
     end
   end
-
   # search for substrings in dictionary
   results = substrings_from_input.each_with_object(Hash.new(0)) do |substr, h|
     if dictionary.include?(substr)
