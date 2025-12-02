@@ -20,20 +20,19 @@
 def stock_picker(daily_prices)
   sell_day = nil
   buy_day = nil
-  profit = nil
+  profit = 0
   # Iterate through the array (each with index)
   # for each index, find higher values and compute profit, store values and highest profit seen.
   daily_prices.each_with_index do |price, index|
     sub_array = daily_prices[index + 1..-1]
-    if profit.nil?
+
+    if(sub_array.length > 1 && (sub_array.max - price) > profit)
       profit = sub_array.max - price
       buy_day = index
-      sell_day = sub_array.index(sub_array.max)
-    elsif(sub_array.length > 1 && (sub_array.max - price) > profit)
-      profit = sub_array.max - price
-      buy_day = index
-      sell_day = sub_array.index(sub_array.max)
+      sell_day = daily_prices.index(sub_array.max)
     end
   end
   [buy_day, sell_day]
 end
+
+# [17,3,6,9,15,8,6,1,10]
