@@ -21,6 +21,3 @@ def caesar_cipher(str, shift)
   # Convert characters to their ASCII codes, shift and wrap, then convert back
   str.bytes.map { |code| shift_code(code, shift).chr }.join
 end
-
-# Example:
-# puts caesar_cipher("What", 5) # => "Bmfy"
