@@ -26,7 +26,7 @@ def stock_picker(daily_prices)
   daily_prices.each_with_index do |price, index|
     sub_array = daily_prices[index + 1..-1]
 
-    if(sub_array.length > 1 && (sub_array.max - price) > profit)
+    if sub_array.any? && (sub_array.max - price) >= profit
       profit = sub_array.max - price
       buy_day = index
       sell_day = daily_prices.index(sub_array.max)
@@ -35,4 +35,4 @@ def stock_picker(daily_prices)
   [buy_day, sell_day]
 end
 
-# [17,3,6,9,15,8,6,1,10]
+# [17,3,6,9,13,8,6,1,15]
