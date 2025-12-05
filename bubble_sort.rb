@@ -1,6 +1,6 @@
 def bubble_sort(unsorted_list)
   working_list = unsorted_list.dup
-  last_index = unsorted_list.length - 1
+  last_index = working_list.length - 1
 
   begin
     unchanged = true
