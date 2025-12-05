@@ -9,14 +9,6 @@
 # - Edge cases: lowest day is the last day or highest day is the first day. 
 #   - Pick the next lowest or the next highest as the day to buy or sell in that scenario
 
-# TODO: Initial Version Goals
-# Build something like:
-# 1.	Find low.
-# 2.	Find high after low.
-# 3.	Compute profit.
-# 4.	Repeat.
-# 5.	Keep best.
-
 def stock_picker(daily_prices)
   sell_day = nil
   buy_day = nil
