@@ -1,6 +1,8 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "rspec"
+source 'https://rubygems.org'
+
 gem 'pry'
 gem 'pry-byebug'
-gem "rubocop", "~> 1.81"
+gem 'rspec'
+gem 'rubocop', '~> 1.81'
