@@ -2,18 +2,18 @@ def bubble_sort(unsorted_list)
   working_list = unsorted_list.dup
 
   begin
-    changed = false
+    unchanged = true
     working_list.each_with_index do |value, idx|
       
-      unless idx.eql? working_list.length - 1
+      if idx != working_list.length - 1
         if value > working_list[idx + 1]
           working_list[idx] = working_list[idx + 1]
           working_list[idx + 1] = value
-          changed = true
+          unchanged = false
         end
       end
     end
-  end until !changed
+  end until unchanged
   working_list
 end
 
